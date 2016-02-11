@@ -2,7 +2,6 @@
 {
     using System;
     using System.Collections.Generic;
-    using System.Linq;
 
     public class Processor
     {
@@ -19,11 +18,6 @@
         public Processor()
         {
 
-        }
-
-        public Processor(string filename)
-        {
-            GetRecords(filename);
         }
 
         public List<Record> GetRecords(string filename)
