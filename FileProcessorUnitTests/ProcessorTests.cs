@@ -12,7 +12,8 @@
         {
             // Create a file
             string filename = "good.txt";
-            var records = Processor.GetRecords(filename);
+            var processor = new Processor();
+            var records = processor.GetRecords(filename);
             Assert.AreEqual(30, records.Count);
         }
 
@@ -22,7 +23,8 @@
             var filename = "doesnotexist.txt";
             try
             {
-                Processor.GetRecords(filename);
+                var processor = new Processor();
+                processor.GetRecords(filename);
             }
             catch (Exception ex)
             {
@@ -34,52 +36,59 @@
         public void TestGetRecordsWithBadRecord()
         {
             string filename = "bad.txt";
-            var unsorted = Processor.GetRecords(filename);
+            var processor = new Processor();
+            var unsorted = processor.GetRecords(filename);
             Assert.AreEqual(27, unsorted.Count);
         }
 
         [TestMethod]
         public void TestSortByGender()
         {
+            var processor = new Processor();
+
             // Create a file
             string filename = "good.txt";
-            var unsorted = Processor.GetRecords(filename);
+            var unsorted = processor.GetRecords(filename);
             Assert.AreEqual(30, unsorted.Count);
 
-            var sorted = Processor.SortByGenderAndLastName(unsorted, true);
+            var sorted = RecordUtility.SortByGenderAndLastName(unsorted, true);
             Assert.AreEqual(sorted[0], unsorted[18]);
 
-            sorted = Processor.SortByGenderAndLastName(unsorted, false);
+            sorted = RecordUtility.SortByGenderAndLastName(unsorted, false);
             Assert.AreEqual(sorted[0], unsorted[4]);
         }
 
         [TestMethod]
         public void TestSortByDateOfBirth()
         {
+            var processor = new Processor();
+
             // Create a file
             string filename = "good.txt";
-            var unsorted = Processor.GetRecords(filename);
+            var unsorted = processor.GetRecords(filename);
             Assert.AreEqual(30, unsorted.Count);
 
-            var sorted = Processor.SortByDateOfBirth(unsorted, true);
+            var sorted = RecordUtility.SortByDateOfBirth(unsorted, true);
             Assert.AreEqual(sorted[0], unsorted[22]);
 
-            sorted = Processor.SortByDateOfBirth(unsorted, false);
+            sorted = RecordUtility.SortByDateOfBirth(unsorted, false);
             Assert.AreEqual(sorted[0], unsorted[28]);
         }
 
         [TestMethod]
         public void TestSortByLastName()
         {
+            var processor = new Processor();
+
             // Create a file
             string filename = "good.txt";
-            var unsorted = Processor.GetRecords(filename);
+            var unsorted = processor.GetRecords(filename);
             Assert.AreEqual(30, unsorted.Count);
 
-            var sorted = Processor.SortByLastName(unsorted, true);
+            var sorted = RecordUtility.SortByLastName(unsorted, true);
             Assert.AreEqual(sorted[0], unsorted[4]);
 
-            sorted = Processor.SortByLastName(unsorted, false);
+            sorted = RecordUtility.SortByLastName(unsorted, false);
             Assert.AreEqual(sorted[0], unsorted[2]);
         }
     }

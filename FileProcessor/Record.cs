@@ -10,6 +10,11 @@
         public string FavoriteColor { get; set; }
         public DateTime DateOfBirth { get; set; }
 
+        public Record()
+        {
+
+        }
+
         public Record(string line)
         {
             if (string.IsNullOrEmpty(line)) throw new Exception("Invalid record data: no data");

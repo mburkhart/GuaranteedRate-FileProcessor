@@ -1,0 +1,58 @@
+﻿<div id="body">
+    <ul id="records"></ul>
+</div>
+
+<form id="addRecordForm" method="post">
+    <h3>Create a new Record</h3>
+    <p>
+        <label for="lastName">Last Name:</label>
+        <input type="text" name="LastName" />
+    </p>
+    <p>
+        <label for="firstName">First Name:</label>
+        <input type="text" name="FirstName" />
+    </p>
+    <p>
+        <label for="gender">Gender:</label>
+        <input type="text" name="Gender" />
+    </p>
+    <p>
+        <label for="favColor">Favorite Color:</label>
+        <input type="text" name="FavoriteColor" />
+    </p>
+    <p>
+        <label for="birthDate">Date of Birth:</label>
+        <input type="text" name="DateOfBirth" />
+    </p>
+    <input type="button" id="saveRecord" value="Save" />
+</form>
+
+@section scripts{
+<script type="text/javascript">
+$(function()
+{
+        $.getJSON('/records', function(recordsJsonPayload)
+        {
+            $(recordsJsonPayload).each(function (i, item)
+            {
+                $('#records').append('<li>' + item.LastName + '</li>');
+            });
+        });
+});
+</script>
+
+<script type="text/javascript">
+
+$('#saveRecord').click(function()
+         {
+              $.post("/records",
+                    $("#addRecordForm").serialize(),
+                    function(value)
+                    {
+                        $('#records').append('<li>Created record for ' + value.FirstName + ' ' + value.LastName + '</li>');
+                    },
+                    "json"
+              );
+         });
+</script>
+    }

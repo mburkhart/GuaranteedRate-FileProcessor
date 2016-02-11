@@ -4,12 +4,30 @@
     using System.Collections.Generic;
     using System.Linq;
 
-    public static class Processor
+    public class Processor
     {
-        public static List<Record> GetRecords(string filename)
-        {
-            var records = new List<Record>();
+        private List<Record> _records = new List<Record>();
 
+        public List<Record> Records
+        {
+            get
+            {
+                return _records;
+            }
+        }
+
+        public Processor()
+        {
+
+        }
+
+        public Processor(string filename)
+        {
+            GetRecords(filename);
+        }
+
+        public List<Record> GetRecords(string filename)
+        {
             if (!System.IO.File.Exists(filename))
                 throw new Exception(string.Format("File '{0}' does not exist", filename));
 
@@ -21,8 +39,7 @@
                     try
                     {
                         string line = sr.ReadLine();
-                        Record record = new Record(line);
-                        if (record != null) records.Add(record);
+                        AddRecord(line);
                     }
                     catch
                     {
@@ -31,34 +48,18 @@
                 }
             }
 
-            return records;
-        }
-        
-        public static List<Record> SortByGenderAndLastName(List<Record> records, bool ascending = true)
-        {
-            // TODO: Probably should also sub-sort by FirstName, but the requirements aren't clear on this
-            if (ascending)
-                return records.OrderBy(x => x.Gender).ThenBy(x => x.LastName).ToList();
-            else
-                return records.OrderByDescending(x => x.Gender).ThenBy(x => x.LastName).ToList();
+            return _records;
         }
 
-        public static List<Record> SortByDateOfBirth(List<Record> records, bool ascending = true)
+        public void AddRecord(string data)
         {
-            // TODO: Probably should also sub-sort by LastName, but the requirements aren't clear on this
-            if (ascending)
-                return records.OrderBy(x => x.DateOfBirth).ToList();
-            else
-                return records.OrderByDescending(x => x.DateOfBirth).ToList();
+            Record record = new Record(data);
+            AddRecord(record);
         }
 
-        public static List<Record> SortByLastName(List<Record> records, bool ascending = true)
+        public void AddRecord(Record record)
         {
-            // TODO: Probably should also sub-sort by FirstName, but the requirements aren't clear on this
-            if (ascending)
-                return records.OrderBy(x => x.LastName).ToList();
-            else
-                return records.OrderByDescending(x => x.LastName).ToList();
+            if (record != null) _records.Add(record);
         }
     }
 }

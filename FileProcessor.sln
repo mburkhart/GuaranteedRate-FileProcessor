@@ -14,6 +14,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "OpenCover", "OpenCover", "{
 		OpenCover.UI.config = OpenCover.UI.config
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileProcessorWebService", "FileProcessorWebService\FileProcessorWebService.csproj", "{088C2B1F-068E-43B0-B22F-AF9D56AF265D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -32,6 +34,10 @@ Global
 		{6C5EA2A0-C6BE-42EB-AD31-8E8384F8CBD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6C5EA2A0-C6BE-42EB-AD31-8E8384F8CBD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6C5EA2A0-C6BE-42EB-AD31-8E8384F8CBD3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{088C2B1F-068E-43B0-B22F-AF9D56AF265D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{088C2B1F-068E-43B0-B22F-AF9D56AF265D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{088C2B1F-068E-43B0-B22F-AF9D56AF265D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{088C2B1F-068E-43B0-B22F-AF9D56AF265D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -19,16 +19,17 @@
                 if (!System.IO.File.Exists(filename))
                     throw new Exception(string.Format("File '{0}' does not exist", filename));
 
-                var records = Processor.GetRecords(filename);
+                var processor = new Processor();
+                var records = processor.GetRecords(filename);
 
                 Console.WriteLine("Sorted by Gender/LastName (ascending):");
-                Print(Processor.SortByGenderAndLastName(records, true));
+                Print(RecordUtility.SortByGenderAndLastName(records, true));
 
                 Console.WriteLine("Sorted by DateOfBirth (ascending):");
-                Print(Processor.SortByDateOfBirth(records, true));
+                Print(RecordUtility.SortByDateOfBirth(records, true));
 
                 Console.WriteLine("Sorted by LastName (descending):");
-                Print(Processor.SortByLastName(records, false));
+                Print(RecordUtility.SortByLastName(records, false));
             }
 
             Console.Read();
